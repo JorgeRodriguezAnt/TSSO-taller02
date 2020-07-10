@@ -13,7 +13,7 @@ void sumaParcial(const std::vector<uint32_t> &v,
 
 int main(int argc, char** argv){
 
-        uint32_t cantArray;
+        uint32_t tamArray;
         uint32_t numThreads;
         uint32_t limitinferior;
         uint32_t limSuperior;
@@ -26,12 +26,12 @@ int main(int argc, char** argv){
 
         std::shared_ptr<checkArgs> argumentos = (std::shared_ptr<checkArgs>) new checkArgs(argc, argv);
 
-        cantArray = argumentos->getArgs().tamProblema;
+        tamArray       = argumentos->getArgs().tamArray;
         numThreads     = argumentos->getArgs().numThreads;
         limitinferior  = argumentos->getArgs().limitinf;
         limSuperior    = argumentos->getArgs().limitsup;
 
-        std::cout << "Tamaño del arreglo: " << cantArray << std::endl;
+        std::cout << "Tamaño del arreglo: " << tamArray << std::endl;
         std::cout << "Threads  : " << numThreads     << std::endl;
         std::cout << "Limit inferior: " << limitinferior  << std::endl;
         std::cout << "Limit superior : " << limSuperior     << std::endl;
@@ -41,7 +41,7 @@ int main(int argc, char** argv){
 
         //Modulo llenado
         std::uniform_int_distribution<uint32_t> nRandom(limitinferior, limSuperior);
-        for(size_t i=0; i < cantArray; i++){
+        for(size_t i=0; i < tamArray; i++){
                 uint32_t number = nRandom(rng);
                 v.push_back( number );
         }
@@ -51,8 +51,6 @@ int main(int argc, char** argv){
         for(auto& num : v){
                 sumaSerial += num;
         }
-
-
 
         auto end = std::chrono::high_resolution_clock::now();
         auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -87,11 +85,11 @@ int main(int argc, char** argv){
         float eficiencia = speedUp/numThreads;
         std::cout << "====Serial====" << std::endl;
         std::cout << "sumaSerial  : " << sumaSerial << std::endl;
-        std::cout << "T. serial   :"  << totalTimeSerial << std::endl;
+        std::cout << "Tiempo total serial   :"  << totalTimeSerial << std::endl;
         std::cout << std::endl;
         std::cout << "====Threads====" << std::endl;
         std::cout << "sumaThreads : " << sumaThreads << std::endl;
-        std::cout << "T. paralelo :"  << totalTimeThread << std::endl;
+        std::cout << "Tiempo total threads :"  << totalTimeThread << std::endl;
         std::cout << std::endl;
 
         std::cout << "SpeedUp    :"<<speedUp << std::endl;
