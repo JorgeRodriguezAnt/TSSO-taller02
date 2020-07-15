@@ -1,6 +1,6 @@
 SRCDIR=src
 
-default: all
+default:	all
 
 all:
 	@cd $(SRCDIR) && $(MAKE)
@@ -9,7 +9,7 @@ clean:
 	@cd $(SRCDIR) && $(MAKE) clean
 	@rm -rf *~ core
 
-distclean: clean
+distclean:	clean
 	@cd $(SRCDIR) && make distclean
 
-.PHONY: all clean distclean
+.PHONY:	all clean distclean
