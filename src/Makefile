@@ -21,7 +21,7 @@ OBJS=$(patsubst %.cc,$(DIR_OBJ)/%.o,$(SRCS))
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-         $(CXX) -o $@ $^ $(CXXFLAGS) $(LDLIBS) $(LDFLAGS)
+        $(CXX) -o $@ $^ $(CXXFLAGS) $(LDLIBS) $(LDFLAGS)
 
 $(DIR_OBJ)/%.o: %.cc
         @mkdir -p $(DIR_OBJ)
