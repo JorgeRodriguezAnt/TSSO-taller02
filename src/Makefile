@@ -20,7 +20,7 @@ OBJS=$(patsubst %.cc,$(DIR_OBJ)/%.o,$(SRCS))
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+$(TARGET):      $(OBJS)
         $(CXX) -o $@ $^ $(CXXFLAGS) $(LDLIBS) $(LDFLAGS)
 
 $(DIR_OBJ)/%.o: %.cc
@@ -31,7 +31,7 @@ clean:
         @$(RM) $(OBJS)
         @$(RM) *~ core
 
-distclean: clean
+distclean:      clean
         @$(RM) $(TARGET)
 
 .PHONY: all clean distclean
